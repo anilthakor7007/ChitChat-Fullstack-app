@@ -61,7 +61,7 @@ setTimeout(() => {
 
   socket.on('typing', (room) => {
     const username = users.get(socket.id) || 'Anonymous';
-    socket.to(room).emit('typing', { username, room }); // Exclude sender
+    socket.to(room).emit('typing', { username, room }); 
   });
 
   socket.on('stopTyping', (room) => {
@@ -76,7 +76,7 @@ setTimeout(() => {
   });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
